@@ -1,0 +1,5 @@
+GET http://localhost:8000/movie/random
+
+GET http://localhost:8000/artist/random
+
+GET http://localhost:8000/tv/random
