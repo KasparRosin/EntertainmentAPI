@@ -14,7 +14,6 @@ app.get("/movie/random", async (req, res) => {
 app.get("/tv/random", async (req, res) => {
   const latestShow = await requestData("tv/latest");
   const data = await getRandomShow(latestShow.id);
-  console.log(data);
   const video = await getVideo(`${data.name} trailer ${data.release_year}`);
   res.json({ data: data, trailers: video });
 });
@@ -106,8 +105,8 @@ async function getRandomArtist() {
     "search?q=year:0000-9999&type=artist&market=US"
   ); // it seems it's bugged, hardcoding 1500
   while (searchingArtist) {
-    console.log("Searching for artist...");
-    const randomOffset = Math.floor(Math.random() * 1500); //artistsData.artists.total
+    const randomOffset = Math.floor(Math.random() * 1500);
+    console.log("Searching for Artist with ID:", randomOffset); //artistsData.artists.total
     artistData = await requestArtistData(
       `search?q=year:0000-9999&type=artist&market=US&limit=1&offset=${randomOffset}`
     );
